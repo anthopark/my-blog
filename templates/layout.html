@@ -39,12 +39,23 @@
     </div>
 
     <div id="page">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <div class="content">
             {% block content %}{% endblock content %}
         </div>
 
         <div class="footer">
-
+            © anthony park, 2020
         </div>
     </div>
 

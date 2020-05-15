@@ -61,6 +61,17 @@ div#page {
     margin: 0 auto;
 }
 
+
+div.alert-success {
+    height: 50px;
+    padding: 10px;
+    color: rgb(30, 61, 38);
+    opacity: 0.8;
+    background-color: rgb(102, 170, 124);
+    border: 2px solid rgb(105, 153, 96);
+    text-align: center;
+}
+
 ul.entry-list {
     padding: 0;
     list-style: none;
@@ -100,7 +111,14 @@ textarea#message-textarea {
 div#contact_form_button {
     margin-left: 140px;
     width: 140px;
-    
+}
+
+div.footer {
+    font-size: 14px;
+}
+
+div.invalid-feedback {
+    color: rgb(223, 113, 113)
 }
 
 input#contact-button {

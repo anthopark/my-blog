@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="content-title">Contact</h1>
+<div class="form">
+    <form method="POST" action="">
+        <!-- protection against CSRF attacks -->
+        {{ form.hidden_tag() }}
+        <div id="contact_form_name">
+            {{ form.name.label(class="") }}
+            <div class="controls">
+                {{ form.name(class="") }}
+            </div>
+        </div>
+        <div id="contact_form_email">
+            {{ form.email.label(class="")}}
+            <div class="controls">
+                {{ form.email(class="")}}
+            </div>
+        </div>
+        <div id="contact_form_message">
+            {{ form.message.label(class="")}}
+            <div class="controls">
+                {{ form.message(id="message-textarea")}}
+            </div>
+        </div>
+        <div id="contact_form_button">
+            {{ form.submit(id="contact-button")}}
+        </div>
+    </form>
+</div>
+{% endblock content%}

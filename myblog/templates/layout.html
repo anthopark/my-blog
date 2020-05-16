@@ -38,7 +38,10 @@
                 </li>
                 {% if current_user.is_authenticated %}
                 <li class="menu-item">
-                    <a href="{{ url_for('logout')  }}">Logout</a>
+                    <a href="{{ url_for('post_entry')  }}">new post</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ url_for('logout')  }}">logout</a>
                 </li>
                 {% endif %}
         </div>

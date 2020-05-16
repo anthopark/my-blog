@@ -1,4 +1,48 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Post Blog</h1>
+
+<div class="form" id="post-form">
+    <h1 class="content-title">{{ legend }}</h1>
+    <form method="POST" action="">
+        <!-- protection against CSRF attacks -->
+        {{ form.hidden_tag() }}
+        <div id="post-title">
+            {{ form.title.label(class="")}}
+            <div class="controls">
+
+                {% if form.title.errors %}
+                {{ form.title(class="is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.title(class="") }}
+                {% endif %}
+            </div>
+        </div>
+        <div id="post-content">
+            {{ form.content.label(class="")}}
+            <div class="controls">
+
+                {% if form.content.errors %}
+                {{ form.content(class="is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.content(class="") }}
+                {% endif %}
+
+            </div>
+        </div>
+        <div id="post-submit">
+            {{ form.submit(id="login-button")}}
+        </div>
+        
+    </form>
+</div>
 {% endblock content%}

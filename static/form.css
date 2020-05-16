@@ -1,0 +1,63 @@
+.form {
+    margin: 20px 0 40px;
+}
+
+.form label {
+    float: left;
+    width: 140px;
+}
+
+.form div.controls {
+    margin: 0 0 10px 140px;
+}
+
+.form input, .form textarea {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #a9a9a9;
+}
+
+textarea#message-textarea {
+    height: 140px;
+    overflow: auto;
+}
+
+div#contact-submit, div#login-submit {
+    margin-left: 140px;
+    width: 140px;
+}
+
+div.footer {
+    font-size: 14px;
+}
+
+div.invalid-feedback {
+    color: rgb(223, 113, 113)
+}
+
+input#contact-button, input#login-button {
+    border: 1px solid #a9a9a9;
+    background-color: #4f6e8d;
+    color: #fff;
+    padding: 4px 16px;
+    height: 30px;
+    font-family: Aldrich, sans;
+}
+
+div#login-form {
+    margin: 20px 100px 40px 100px
+}
+
+div#login-remember {
+    margin-left: 140px;
+}
+
+div#login-remember .checkbox {
+    float: left;
+    width: auto;
+}
+
+div#login-remember .text {
+    padding-left: 10px;
+    width: 150px;
+}

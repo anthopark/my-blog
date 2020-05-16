@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import BlogPostForm, ContactForm
+from forms import BlogPostForm, ContactForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 
 from datetime import datetime
@@ -23,6 +23,11 @@ class BlogEntry(db.Model):
 
     def __repr__(self):
         return f"BlogEntry('{self.title}', '{self.date_posted}')"
+
+
+
+
+
 
 posts = [
     {
@@ -53,6 +58,12 @@ def contact():
         flash(f"Thank you for reaching out, {form.name.data}!", 'success')
         return redirect(url_for('home'))
     return render_template("contact.html", title="Contact", form=form)
+
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', title="Login", form=form)
 
 
 @app.route("/post-entry")

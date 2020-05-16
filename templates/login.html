@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="form" id="login-form">
+    <h1 class="content-title">Login</h1>
+    <form method="POST" action="">
+        <!-- protection against CSRF attacks -->
+        {{ form.hidden_tag() }}
+        <div id="login-email">
+            {{ form.email.label(class="")}}
+            <div class="controls">
+
+                {% if form.email.errors %}
+                {{ form.email(class="is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="") }}
+                {% endif %}
+            </div>
+        </div>
+        <div id="login-password">
+            {{ form.password.label(class="")}}
+            <div class="controls">
+
+                {% if form.password.errors %}
+                {{ form.password(class="is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class="") }}
+                {% endif %}
+
+            </div>
+        </div>
+        <div id="login-remember">
+            {{ form.remember(class="checkbox")}}
+            {{ form.remember.label(class="text")}}
+        </div>
+        <div id="login-submit">
+            {{ form.submit(id="login-button")}}
+        </div>
+        
+    </form>
+</div>
+{% endblock content%}

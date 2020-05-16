@@ -36,6 +36,11 @@
                 <li class="menu-item">
                     <a href="{{ url_for('home')  }}">/resume</a>
                 </li>
+                {% if current_user.is_authenticated %}
+                <li class="menu-item">
+                    <a href="{{ url_for('logout')  }}">Logout</a>
+                </li>
+                {% endif %}
         </div>
     </div>
 

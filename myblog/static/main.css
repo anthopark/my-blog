@@ -72,6 +72,30 @@ div.alert-success {
     text-align: center;
 }
 
+div.alert-danger {
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 50px;
+    padding: 10px;
+    color: rgb(61, 30, 30);
+    opacity: 0.8;
+    background-color: rgb(170, 102, 102);
+    border: 2px solid rgb(153, 96, 96);
+    text-align: center;
+}
+
+div.alert-info {
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 50px;
+    padding: 10px;
+    color: rgb(32, 43, 87);
+    opacity: 0.8;
+    background-color: rgb(105, 166, 235);
+    border: 2px solid rgb(36, 73, 133);
+    text-align: center;
+}
+
 ul.entry-list {
     padding: 0;
     list-style: none;

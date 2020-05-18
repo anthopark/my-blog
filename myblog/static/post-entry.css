@@ -1,0 +1,38 @@
+h1.content-title {
+    color: rgb(31, 62, 75);
+    border-bottom: 1px solid #c1cfde;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+p.by-line {
+    font-size: 13px;
+    text-align: right;
+    border-bottom: 1px solid #c1cfde;
+    margin-top: -17px;
+    padding-bottom: 10px;
+    font-family: 'Raleway';
+    font-weight: 300;
+}
+
+div.single-entry p.by-line {
+    margin-bottom: 60px;
+}
+
+h2.content-title {
+    font-size: 38px;
+    color: rgb(31, 62, 75);
+    border-bottom: 1px solid #c1cfde;
+    margin-bottom: 30px;
+    line-height: 1.2;
+
+}
+
+div.single-entry {
+    margin: 0 0 100px 0;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(31, 62, 75);
+}

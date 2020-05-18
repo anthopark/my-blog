@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<div class="single-entry">
     <h1 class="content-title">
         {{ entry.title }}
     </h1>
@@ -9,6 +9,8 @@
         By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d')}}
     </p>
 
-    <p>{{ entry.content }}</p>
-
+    <div class="blog-content">
+        {{ entry.content }}
+    </div>
+</div>
 {% endblock content%}

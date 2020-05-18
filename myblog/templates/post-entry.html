@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="form" id="post-form">
-    <h1 class="content-title">{{ legend }}</h1>
+    <h1>{{ legend }}</h1>
     <form method="POST" action="">
         <!-- protection against CSRF attacks -->
         {{ form.hidden_tag() }}
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div id="post-submit">
-            {{ form.submit(id="login-button")}}
+            {{ form.submit(id="post-button")}}
         </div>
         
     </form>

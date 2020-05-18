@@ -7,7 +7,7 @@ body {
     line-height: 1.7;
     color: #222;
     font-size: 18px;
-    font-family: Aldrich, serif;
+    font-family: "lora", serif;
     margin: 0;
 }
 
@@ -96,6 +96,10 @@ div.alert-info {
     text-align: center;
 }
 
+li.entry-list-item {
+    margin-bottom: 100px;
+}
+
 ul.entry-list {
     padding: 0;
     list-style: none;
@@ -106,6 +110,11 @@ h1 {
     border-bottom: 2px solid #42586e;
     margin-bottom: 60px;
     padding-bottom: 10px;
+}
+
+h1, h2 {
+    font-family: 'Raleway';
+    font-weight: 300;
 }
 
 

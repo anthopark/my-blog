@@ -8,8 +8,8 @@
         {% for entry in entries %}
         <li class="entry-list-item">
             <div class="entry-list-item">
-                <h2><a href="{{ url_for('blog_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
-                <p>By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d') }}</p>
+                <h2 class="content-title"><a href="{{ url_for('blog_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
+                <p class="by-line">By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d') }}</p>
                 <p>{{ entry.content }}</p>
             </div>
         </li>

@@ -22,7 +22,12 @@ textarea#message-textarea {
     overflow: auto;
 }
 
-div#contact-submit, div#login-submit {
+textarea#content {
+    height: 400px;
+    overflow: auto;
+}
+
+div#contact-submit, div#login-submit, div#post-submit {
     margin-left: 140px;
     width: 140px;
 }
@@ -35,7 +40,7 @@ div.invalid-feedback {
     color: rgb(223, 113, 113)
 }
 
-input#contact-button, input#login-button {
+input#contact-button, input#login-button, input#post-button {
     border: 1px solid #a9a9a9;
     background-color: #4f6e8d;
     color: #fff;

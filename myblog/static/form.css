@@ -50,7 +50,7 @@ input#contact-button, input#login-button, input#post-button {
 }
 
 div#login-form {
-    margin: 20px 100px 40px 100px
+    margin: 0px 100px 40px 100px
 }
 
 div#login-remember {

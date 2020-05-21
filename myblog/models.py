@@ -15,6 +15,7 @@ class BlogEntry(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    is_published = db.Column(db.Boolean, nullable=False, default=True)
 
     def __repr__(self):
         return f"BlogEntry('{self.title}', '{self.date_posted}')"

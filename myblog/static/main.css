@@ -28,7 +28,7 @@ div#nav a {
     display: block;
     color: #fff;
     height: 100%;
-    padding: 11px 15px;
+    padding: 11px 12px;
     text-decoration: none;
 }
 
@@ -63,37 +63,43 @@ div#page {
 
 
 div.alert-success {
-    height: 50px;
+    height: 45px;
     padding: 10px;
     color: rgb(30, 61, 38);
-    opacity: 0.8;
+    opacity: 0.7;
     background-color: rgb(102, 170, 124);
     border: 2px solid rgb(105, 153, 96);
     text-align: center;
+    font-family: Aldrich, sans;
+    margin-top: -60px;
 }
 
 div.alert-danger {
     margin-left: 100px;
     margin-right: 100px;
-    height: 50px;
+    height: 45px;
     padding: 10px;
     color: rgb(61, 30, 30);
-    opacity: 0.8;
+    opacity: 0.7;
     background-color: rgb(170, 102, 102);
     border: 2px solid rgb(153, 96, 96);
     text-align: center;
+    font-family: Aldrich, sans;
+    margin-top: -60px;
 }
 
 div.alert-info {
     margin-left: 100px;
     margin-right: 100px;
-    height: 50px;
+    height: 45px;
     padding: 10px;
     color: rgb(32, 43, 87);
-    opacity: 0.8;
+    opacity: 0.7;
     background-color: rgb(105, 166, 235);
     border: 2px solid rgb(36, 73, 133);
     text-align: center;
+    font-family: Aldrich, sans;
+    margin-top: -60px;
 }
 
 li.entry-list-item {
@@ -137,6 +143,10 @@ h1, h2 {
     div#nav li.menu-item {
         display: list-item;
     }
+    div#nav li.login-additionals {
+        display: none;
+    }
+
     div#page {
         width: 720px;
     }

@@ -39,10 +39,10 @@
                     <a href="{{ url_for('home')  }}">/resume</a>
                 </li>
                 {% if current_user.is_authenticated %}
-                <li class="menu-item">
+                <li class="menu-item login-additionals">
                     <a href="{{ url_for('post_entry')  }}">new post</a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item login-additionals">
                     <a href="{{ url_for('logout')  }}">logout</a>
                 </li>
                 {% endif %}

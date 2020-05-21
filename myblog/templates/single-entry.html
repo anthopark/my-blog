@@ -1,6 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="single-entry">
+
+    {% if entry.author == current_user %}
+    <div class="user-controls">
+        <a class="entry-update" href="{{ url_for('update_entry', slug=entry.slug) }}">Update</a>
+        <a class="entry-delete" href="{{ url_for('unpublish_entry', slug=entry.slug)}}">Unpublish</a>
+    </div>
+    {% endif %}
+    
     <h1 class="content-title">
         {{ entry.title }}
     </h1>
@@ -12,5 +20,6 @@
     <div class="blog-content">
         {{ entry.content }}
     </div>
+
 </div>
 {% endblock content%}

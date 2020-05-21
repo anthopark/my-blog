@@ -97,6 +97,18 @@ def update_entry(slug):
     return render_template("post-entry.html",
                            title="Update Blog Post", form=form, legend="Update Blog Post")
 
+@app.route("/blog/<slug>/unpublish")
+@login_required
+def unpublish_entry(slug):
+    entry = BlogEntry.query.filter_by(slug=slug).first()
+    if entry.author != current_user:
+        abort(403)
+    entry.is_published = False
+    db.session.commit()
+    flash(f"{entry.title[:20]}... Unpublished!", 'info')
+    
+    return redirect(url_for('home'))
+
 
 @app.route("/logout")
 def logout():

@@ -4,11 +4,11 @@
 
     {% if entry.author == current_user %}
     <div class="user-controls">
-        <a class="entry-update" href="{{ url_for('update_entry', slug=entry.slug) }}">Update</a>
-        <a class="entry-delete" href="{{ url_for('unpublish_entry', slug=entry.slug)}}">Unpublish</a>
+        <a class="entry-update" href="{{ url_for('blogs.update_entry', slug=entry.slug) }}">Update</a>
+        <a class="entry-delete" href="{{ url_for('blogs.unpublish_entry', slug=entry.slug)}}">Unpublish</a>
     </div>
     {% endif %}
-    
+
     <h1 class="content-title">
         {{ entry.title }}
     </h1>

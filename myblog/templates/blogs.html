@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<ul class="entry-list">
+    {% for entry in entries.items %}
+    <li class="entry-list-item">
+        <div class="entry-list-item">
+            <h2 class="content-title"><a href="{{ url_for('blogs.blog_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
+            <p class="by-line">By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d') }}</p>
+            <p>{{ entry.content }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="pagination">
+    {% for page_num in entries.iter_pages() %}
+        {% if page_num %}
+            {% if entries.page == page_num %}
+                <a class="current-page-num inactive-link" href="{{ url_for('blogs.blog_page', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+                <a class="page-num" href="{{ url_for('blogs.blog_page', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock content%}

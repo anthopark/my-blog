@@ -22,8 +22,3 @@ def contact():
         flash(f"Thank you for reaching out, {form.name.data}!", 'success')
         return redirect(url_for('main.home'))
     return render_template("contact.html", title="Contact", form=form)
-
-
-@main.route("/404")
-def page_not_found():
-    return render_template('404.html', title='Page Not Found')

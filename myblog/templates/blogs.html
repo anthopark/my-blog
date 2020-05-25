@@ -7,7 +7,9 @@
         <div class="entry-list-item">
             <h2 class="content-title"><a href="{{ url_for('blogs.blog_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
             <p class="by-line">By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d') }}</p>
-            <p>{{ entry.content }}</p>
+            <div class="content-preview">
+                {{ entry.content_preview }}
+            </div>
         </div>
     </li>
     {% endfor %}

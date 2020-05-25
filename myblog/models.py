@@ -1,6 +1,12 @@
 from datetime import datetime
 from myblog import db, login_manager
 from flask_login import UserMixin
+from flask import Markup
+
+from markdown import markdown
+from markdown.extensions.codehilite import CodeHiliteExtension
+from markdown.extensions.extra import ExtraExtension
+from bs4 import BeautifulSoup
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -19,6 +25,25 @@ class BlogEntry(db.Model):
 
     def __repr__(self):
         return f"BlogEntry('{self.title}', '{self.date_posted}')"
+
+    @property
+    def markdown_content(self):
+
+        hilite = CodeHiliteExtension(linenums=False, css_class='highlight')
+        extras = ExtraExtension()
+        markdown_content = markdown(self.content, extensions=[hilite, extras])
+
+        return Markup(markdown_content)
+
+    @property
+    def content_preview(self):
+        '''
+        grab first image and first two paragraphs of a markdown content 
+        '''
+        soup = BeautifulSoup(self.markdown_content, 'html.parser')
+        first_two_p = [str(p) for p in soup.find_all('p')[:2]]
+        return Markup(markdown('<br>'.join(first_two_p), extensions=[CodeHiliteExtension(linenums=False, css_class='highlight'), ExtraExtension()]))
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

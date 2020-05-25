@@ -61,6 +61,10 @@ div#page {
     margin: 0 auto;
 }
 
+div.footer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
 div.alert-success {
     height: 45px;

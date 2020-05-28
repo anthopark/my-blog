@@ -39,6 +39,22 @@
 
             </div>
         </div>
+        <div id="post-tags">
+            {{form.tags.label(class="")}}
+            
+            <div class="controls">
+                {% if form.tags.errors %}
+                {{ form.tags(class="is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.tags.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.tags(class="") }}
+                {% endif %}
+            </div>
+        </div>
         <div id="post-submit">
             {{ form.submit(id="post-button")}}
         </div>

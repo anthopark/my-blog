@@ -2,7 +2,6 @@ from flask import Blueprint, request, render_template, redirect, url_for, abort,
 from myblog import db
 from flask_login import login_user, login_required, current_user
 from myblog.models import BlogEntry, User
-from myblog.blogs.utils import get_url_slug
 from myblog.blogs.forms import BlogPostForm
 
 
@@ -26,7 +25,6 @@ def post_entry():
     if form.validate_on_submit():
 
         post = BlogEntry(title=form.title.data,
-                         slug=get_url_slug(form.title.data),
                          content=form.content.data,
                          author=current_user)
 

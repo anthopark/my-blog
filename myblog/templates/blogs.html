@@ -1,14 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<h1>
+    Blogs
+    <small class="">
+        newest | <a href="{{ url_for('blogs.by_tag') }}">by tag</a>
+    </small>
+</h1>
 <ul class="entry-list">
     {% for entry in entries.items %}
     <li class="entry-list-item">
         <div class="entry-list-item">
-            <h2 class="content-title"><a href="{{ url_for('blogs.blog_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
+            <h2 class="content-title"><a href="{{ url_for('blogs.single_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
             <p class="by-line">By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d') }}</p>
             <div class="content-preview">
-                {{ entry.content_preview }}
+                {% for content in entry.preview_content %}
+                    {{ content }}
+                {% endfor %}
             </div>
         </div>
     </li>

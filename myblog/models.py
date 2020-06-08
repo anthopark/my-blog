@@ -39,7 +39,7 @@ class BlogEntry(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     is_published = db.Column(db.Boolean, nullable=False, default=True)
     tags = db.relationship('Tag', secondary=entry_tag,
-                           backref='entries', lazy='dynamic')
+                           backref='entries', lazy=True)
 
     def __init__(self, *args, **kargs):
         super().__init__(*args, **kargs)

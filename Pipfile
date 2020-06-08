@@ -15,6 +15,7 @@ flask-login = "*"
 markdown = "*"
 pygments = "*"
 bs4 = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.8"

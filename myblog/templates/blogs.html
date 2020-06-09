@@ -1,9 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>
+<h1 class="page-name">
     Blogs
-    <small class="">
-        newest | <a href="{{ url_for('blogs.by_tag') }}">by tag</a>
+    {% if tag_name %}
+    <small class="tag-name">
+        tagged by '{{ tag_name }}'
+    </small>
+    {% endif %}
+    <small class="side-links">
+        <a class="inactive-link" href="{{ url_for('blogs.blog_page') }}">newest</a>
+        | 
+        <a href="{{ url_for('blogs.tag_list') }}">by tag</a>
     </small>
 </h1>
 <ul class="entry-list">
@@ -11,7 +18,13 @@
     <li class="entry-list-item">
         <div class="entry-list-item">
             <h2 class="content-title"><a href="{{ url_for('blogs.single_entry', slug=entry.slug )}}">{{ entry.title }}</a></h2>
-            <p class="by-line">By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d') }}</p>
+            <p class="by-line">
+                {% for tag in entry.tags %}
+                    <a href="{{ url_for('blogs.by_tag', tag=tag.name.lower())}}">{{ tag.name.lower() }}</a>
+                    •
+                {% endfor %}
+                Created on {{ entry.date_posted.strftime('%Y-%m-%d') }}
+            </p>
             <div class="content-preview">
                 {% for content in entry.preview_content %}
                     {{ content }}
@@ -26,7 +39,7 @@
     {% for page_num in entries.iter_pages() %}
         {% if page_num %}
             {% if entries.page == page_num %}
-                <a class="current-page-num inactive-link" href="{{ url_for('blogs.blog_page', page=page_num) }}">{{ page_num }}</a>
+                <a class="current-page-num" href="{{ url_for('blogs.blog_page', page=page_num) }}">{{ page_num }}</a>
             {% else %}
                 <a class="page-num" href="{{ url_for('blogs.blog_page', page=page_num) }}">{{ page_num }}</a>
             {% endif %}

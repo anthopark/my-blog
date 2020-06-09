@@ -104,3 +104,14 @@ def update_entry_tag(existing_tags: [str], updated_tags: [str], entry: BlogEntry
             entry.tags.remove(result)
 
     db.session.commit()
+
+
+def get_tag_frequency_list() -> [(str, int)]:
+    result = []
+
+    for t in Tag.query.all():
+        result.append(
+            (t.name.lower(), len(t.entries))
+        )
+    
+    return sorted(result, key=(lambda x: x[0]))

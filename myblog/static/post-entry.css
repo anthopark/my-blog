@@ -16,12 +16,12 @@ h1.content-title {
 }
 
 p.by-line {
-    font-size: 13px;
+    font-size: 15px;
     text-align: right;
     border-bottom: 1px solid #c1cfde;
     margin-top: -20px;
     padding-bottom: 5px;
-    font-family: 'Raleway', sans;
+    font-family: 'Inconsolata', monospace;
     font-weight: 300;
 }
 

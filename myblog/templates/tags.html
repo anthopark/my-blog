@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1 class="page-name">
+    Blogs
+    <small class="side-links">
+        <a href="{{ url_for('blogs.blog_page') }}">newest</a>
+        | 
+        <a class="inactive-link" href="{{ url_for('blogs.tag_list') }}">by tag</a>
+    </small>
+</h1>
+
+<ul class="tag-list">
+    {% for t in tag_freqs %}
+        <li class="tag-item">
+            <a href="{{ url_for('blogs.by_tag', tag=t[0])}}">{{t[0]}} ({{t[1]}})</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock content%}

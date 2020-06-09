@@ -14,7 +14,11 @@
     </h1>
 
     <p class="by-line">
-        By {{ entry.author.name }} on {{ entry.date_posted.strftime('%Y-%m-%d')}}
+        {% for tag in entry.tags %}
+            <a href="{{ url_for('blogs.by_tag', tag=tag.name.lower())}}">{{ tag.name.lower() }}</a>
+            •
+        {% endfor %}
+        Created on {{ entry.date_posted.strftime('%Y-%m-%d') }}
     </p>
 
     <div class="blog-content">

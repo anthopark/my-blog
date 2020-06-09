@@ -14,14 +14,29 @@ def blog_page():
     page = request.args.get('page', 1, type=int)
 
     entries = BlogEntry.query.filter_by(
-        is_published=True).paginate(page=page, per_page=5)
+        is_published=True).order_by(
+        BlogEntry.date_posted.desc()).paginate(page=page, per_page=5)
 
-    return render_template("blogs.html", entries=entries)
+    return render_template("blogs.html", entries=entries, title="Blogs")
 
 
 @blogs.route("/blogs/tags")
-def by_tag():
-    pass
+def tag_list():
+    tag_freq_list = utils.get_tag_frequency_list()
+
+    return render_template("tags.html", title="Blog Tags", tag_freqs=tag_freq_list)
+
+
+@blogs.route("/blogs/tags/<tag>")
+def by_tag(tag):
+    page = request.args.get('page', 1, type=int)
+
+    entries = BlogEntry.query.filter(BlogEntry.tags.any(
+        Tag.name == tag.title())).order_by(
+        BlogEntry.date_posted.desc()).paginate(page=1, per_page=5)
+
+    return render_template("blogs.html", entries=entries,
+                           title=f"Blogs - {tag.title()}", tag_name=tag)
 
 
 @blogs.route("/post-new", methods=['GET', 'POST'])
@@ -49,7 +64,6 @@ def single_entry(slug):
         abort(403)
 
     return render_template('single-entry.html', title=entry.title, entry=entry)
-
 
 
 @blogs.route("/blog/<slug>/update", methods=['GET', 'POST'])
@@ -94,4 +108,3 @@ def unpublish_entry(slug):
         f"{entry.title if len(entry.title) <= 30 else entry.title[:30] + '...'} Unpublished!", 'info')
 
     return redirect(url_for('main.home'))
-

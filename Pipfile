@@ -16,6 +16,7 @@ markdown = "*"
 pygments = "*"
 bs4 = "*"
 ipython = "*"
+flask-mail = "*"
 
 [requires]
 python_version = "3.8"

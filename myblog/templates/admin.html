@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1 class="page-name">Admin Interface</h1>
+
+<div class="admin-table">
+
+    <h2>Blog Entries</h2>
+    <div id="entry-table">
+        {{ entry_table }}
+    </div>
+
+    <h2>Tag Entries</h2>
+    <div id="tag-table">
+        {{ tag_table }}
+    </div>
+</div>
+
+{% endblock content%}

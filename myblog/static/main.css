@@ -63,7 +63,7 @@ div#page {
 }
 
 div.footer {
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 
@@ -107,6 +107,27 @@ div.alert-info {
     margin-top: -60px;
 }
 
+div.welcome {
+    margin-bottom: 70px;
+}
+
+div.welcome p {
+    margin: 20px 3px;
+}
+
+div.welcome-photo {
+    float: left;
+    margin: 5px 20px 5px 0;
+}
+
+div.welcome-photo > img {
+    width: 100%;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 25px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+}
+
+
+
 li.entry-list-item {
     margin-bottom: 100px;
 }
@@ -125,7 +146,7 @@ h1 {
 
 h1.page-name {
     font-family: 'Exo 2', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     color: #214970;
     font-size: 48px;
 }

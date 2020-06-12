@@ -4,8 +4,8 @@
 
     {% if entry.author == current_user %}
     <div class="user-controls">
-        <a class="entry-update" href="{{ url_for('blogs.update_entry', slug=entry.slug) }}">Update</a>
-        <a class="entry-delete" href="{{ url_for('blogs.unpublish_entry', slug=entry.slug)}}">Unpublish</a>
+        <a class="entry-update" href="{{ url_for('blogs.update_entry', id=entry.id) }}">Update</a>
+        <a class="entry-delete" href="{{ url_for('blogs.unpublish_entry', id=entry.id)}}">Unpublish</a>
     </div>
     {% endif %}
 

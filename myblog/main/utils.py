@@ -6,7 +6,6 @@ from flask import current_app
 
 def send_email_to_myself(form):
     
-    print(current_app.config['MAIL_USERNAME'])
     msg = Message(
         subject=f"Contact From {form.name.data} - My Blog",
         sender=current_app.config['MAIL_USERNAME'],

@@ -17,6 +17,7 @@ pygments = "*"
 bs4 = "*"
 ipython = "*"
 flask-mail = "*"
+flask-table = "*"
 
 [requires]
 python_version = "3.8"

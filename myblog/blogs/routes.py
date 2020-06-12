@@ -32,7 +32,7 @@ def by_tag(tag):
     page = request.args.get('page', 1, type=int)
 
     entries = BlogEntry.query.filter(BlogEntry.tags.any(
-        Tag.name == tag.title())).order_by(
+        Tag.name == tag.title())).filter(BlogEntry.is_published==True).order_by(
         BlogEntry.date_posted.desc()).paginate(page=1, per_page=5)
 
     return render_template("blogs.html", entries=entries,
@@ -66,11 +66,11 @@ def single_entry(slug):
     return render_template('single-entry.html', title=entry.title, entry=entry)
 
 
-@blogs.route("/blog/<slug>/update", methods=['GET', 'POST'])
+@blogs.route("/blog/<id>/update", methods=['GET', 'POST'])
 @login_required
-def update_entry(slug):
+def update_entry(id):
 
-    entry = BlogEntry.query.filter_by(slug=slug).first()
+    entry = BlogEntry.query.filter_by(id=id).first()
 
     if not entry:
         abort(404)
@@ -93,10 +93,10 @@ def update_entry(slug):
                            title="Update Blog Post", form=form, legend="Update Blog Post")
 
 
-@blogs.route("/blog/<slug>/unpublish")
+@blogs.route("/blog/<id>/unpublish")
 @login_required
-def unpublish_entry(slug):
-    entry = BlogEntry.query.filter_by(slug=slug).first()
+def unpublish_entry(id):
+    entry = BlogEntry.query.filter_by(id=id).first()
     if not entry:
         abort(404)
     if entry.author != current_user:
@@ -107,4 +107,55 @@ def unpublish_entry(slug):
     flash(
         f"{entry.title if len(entry.title) <= 30 else entry.title[:30] + '...'} Unpublished!", 'info')
 
-    return redirect(url_for('main.home'))
+    return redirect(url_for('admin.admin_page'))
+
+@blogs.route("/blog/<id>/publish")
+@login_required
+def publish_entry(id):
+    entry = BlogEntry.query.filter_by(id=id).first()
+    if not entry:
+        abort(404)
+    if entry.author != current_user:
+        abort(403)
+
+    entry.is_published = True
+    db.session.commit()
+    flash(
+        f"{entry.title if len(entry.title) <= 30 else entry.title[:30] + '...'} Published!", 'info')
+
+    return redirect(url_for('admin.admin_page'))
+
+
+@blogs.route("/blog/<id>/delete")
+@login_required
+def delete_entry(id):
+    entry = BlogEntry.query.filter_by(id=id).first()
+    if not entry:
+        abort(404)
+    if entry.author != current_user:
+        abort(403)
+
+    db.session.delete(entry)
+    db.session.commit()
+    flash(
+        f"{entry.title if len(entry.title) <= 30 else entry.title[:30] + '...'} Deleted!", 'info')
+
+    return redirect(url_for('admin.admin_page'))
+
+
+@blogs.route("/blogs/tags/<id>/delete")
+@login_required
+def delete_tag(id):
+    tag = Tag.query.filter_by(id=id).first()
+    if not tag:
+        abort(404)
+    if not current_user.is_admin:
+        abort(403)
+    
+    db.session.delete(tag)
+    db.session.commit()
+
+    flash(f"{tag.name} tag deleted!", 'info')
+
+    return redirect(url_for('admin.admin_page'))
+    

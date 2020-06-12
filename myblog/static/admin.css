@@ -1,0 +1,14 @@
+table {
+    border: 1px solid #1C6EA4;
+    background-color: #f2f7f8;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    font-family: 'Exo 2', sans-serif;
+
+}
+  
+  
+th, td {
+    padding: 0px 4px;
+}

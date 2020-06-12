@@ -1,11 +1,17 @@
-from flask import Blueprint, redirect, flash, url_for, request, render_template
+from flask import Blueprint, redirect, flash, url_for, request, render_template, abort
 from myblog import bcrypt
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 from myblog.models import User
 from myblog.admin.forms import LoginForm
 
+import myblog.admin.utils as utils
+
 admin = Blueprint('admin', __name__)
 
+
+@admin.before_request
+def haha():
+    print("haha")
 
 @admin.route("/login", methods=['GET', 'POST'])
 def login():
@@ -36,3 +42,17 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('main.home'))
+
+
+@admin.route("/admin")
+@login_required
+def admin_page():
+    if not current_user.is_admin:
+        abort(403)
+
+    entry_table = utils.build_blog_entry_table()
+
+    tag_table = utils.build_tag_table()
+
+    return render_template('admin.html', title="Admin Interface",
+                           entry_table=entry_table, tag_table=tag_table)

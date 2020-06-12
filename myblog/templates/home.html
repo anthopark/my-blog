@@ -1,7 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="welcome">
 
+<div class="welcome">
+    <div class="welcome-photo">
+        <img src="{{ url_for('static', filename='img/welcome_img2.jpg')}}">
+    </div>
+    <p>
+        Hello world! I'm a senior computer science student at UC Irvine.
+        I'm passionate about learning modern  web technologies and love teaching.
+        I structure and lead Python tutorials at school to help freshmen to succeed in their first-year Python courses. 
+    </p>
+    <p>
+        You can find blogs about the topics I teach at school, or anything I'm excited to share!
+    </p>
 </div>
 
 <ul class="entry-list">
